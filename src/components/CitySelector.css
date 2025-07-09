@@ -1,0 +1,64 @@
+/* Container */
+.city-selector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 220px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  user-select: none; /* Metin seçimini engelle */
+}
+
+/* Arama inputu */
+.city-input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  background-color: white;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.city-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Öneri listesi */
+.city-suggestion-list {
+  position: absolute;
+  top: 100%; /* input'un hemen altı */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 9999;
+  padding: 0;
+  margin: 4px 0 0 0;
+  list-style: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Öneri öğesi */
+.city-suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  background-color: white;
+  user-select: none;
+}
+
+.city-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.city-suggestion-item:hover,
+.city-suggestion-item[aria-selected="true"] {
+  background-color: #f0f0f0;
+}

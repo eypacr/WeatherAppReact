@@ -1,0 +1,278 @@
+/* Genel Container */
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Koyu Tema */
+.weather-container.dark {
+  background: linear-gradient(to bottom right, #2c3e50, #3498db);
+  color: white;
+}
+
+/* Açık Tema */
+.weather-container.light {
+  background: linear-gradient(to bottom right, #e0eafc, #cfdef3);
+  color: #222;
+}
+
+/* Başlıklar */
+.weather-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.weather-container.dark h3,
+.weather-container.dark .hourly-weather h3,
+.weather-container.dark .daily-weather-container h3 {
+  color: white;
+}
+
+.weather-container.light h3,
+.weather-container.light .hourly-weather h3,
+.weather-container.light .daily-weather-container h3 {
+  color: #222;
+}
+
+.weather-container h3 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.8rem;
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* Saatlik ve Haftalık Konteyner */
+.hourly-weather,
+.daily-weather-container {
+  width: 90%;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+/* Saatlik Hava Durumu Kaydırma Alanı */
+.hourly-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 0;
+  cursor: grab;
+}
+
+/* Saatlik Kartlar */
+.hourly-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  min-width: 110px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  color: inherit;
+}
+
+/* Saatlik Kart Yazıları ve İkonlar */
+.hourly-card p {
+  font-size: 14px;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  padding-right: 24px;
+  color: inherit;
+}
+
+.icon-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+  margin-left: 4px;
+  color: inherit;
+}
+
+.icon-temp::after {
+  content: "🌡️";
+}
+
+.icon-humidity::after {
+  content: "💧";
+}
+
+.icon-wind::after {
+  content: "🌬️";
+}
+
+.icon-cloud::after {
+  content: "☁️";
+}
+
+/* Haftalık Hava Kartları */
+.daily-weather-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.weather-card:hover {
+  transform: scale(1.05);
+  background: rgba(241, 196, 15, 0.3);
+}
+
+.weather-card strong {
+  font-size: 1.2rem;
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+/* Animasyon Boyutu */
+.weather-card > div {
+  width: 100px !important;
+  height: 100px !important;
+  margin-bottom: 10px;
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #f1c40f;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 50px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .weather-card {
+    width: 100%;
+  }
+  .weather-container h2 {
+    font-size: 2rem;
+  }
+  .weather-container h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hourly-card {
+    min-width: 100px;
+    padding: 14px 12px;
+  }
+  .hourly-card strong {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tema butonu */
+.theme-toggle-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 20px;
+}
+
+.theme-toggle-button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Koyu tema buton */
+.weather-container.dark .theme-toggle-button {
+  background: linear-gradient(145deg, #f1c40f, #d4ac0d);
+  color: #2c3e50;
+  box-shadow: 0 6px 12px rgba(241, 196, 15, 0.6);
+}
+
+.weather-container.dark .theme-toggle-button:hover {
+  background: linear-gradient(145deg, #d4ac0d, #f39c12);
+  box-shadow: 0 8px 20px rgba(243, 156, 18, 0.8);
+  color: #1a2a3a;
+}
+
+/* Açık tema buton */
+.weather-container.light .theme-toggle-button {
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.6);
+}
+
+.weather-container.light .theme-toggle-button:hover {
+  background: linear-gradient(145deg, #2980b9, #1c598c);
+  box-shadow: 0 8px 20px rgba(28, 89, 140, 0.8);
+  color: #e0e9f5;
+}
+
+/* Butonun parlama efekti için (shine) */
+.theme-toggle-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(25deg);
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+
